@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDNS-FGX - 我が家のネットワークを安全かつ快適にコントロール</title>
+    <meta name="description" content="LAN内機器の自動スキャン、広告・マルウェアのローカルDNSブロック、カスタムブラックリスト、テキスト共有機能を備えたWindows向けネットワーク＆DNS管理ツール（フリーウェア）の公式ページです。">
+    <meta name="robots" content="index, follow">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.3));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.4);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* ガイドセクション（使い方・インストール等） */
+        .guide-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+        }
+
+        .guide-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .guide-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .guide-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guide-card p, .guide-card li {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .guide-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .steps-container {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .steps-container h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .step-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .step-item {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 1.2rem;
+            position: relative;
+        }
+
+        .step-num {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .step-item p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .faq-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .faq-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 1.8rem;
+        }
+
+        .faq-card h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* ライセンス・免責事項セクション */
+        .legal-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .legal-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .legal-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .legal-card p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-sub);
+            border-top: 1px solid #1e293b;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="HDNS-FGX-ICON.png" alt="HDNS-FGX Icon" class="logo-icon">
+            <div class="logo">HDNS-FGX</div>
+        </div>
+        <a href="https://github.com/roseGarden2500/HDNS-FGX_LP/releases/download/v1.0.0/HDNS-FGX_v1.0.0.zip" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">ダウンロード</a>
+    </header>
+
+    <section class="hero">
+        <img src="HDNS-FGX-ICON.png" alt="HDNS-FGX Icon" class="hero-icon">
+        <h1>我が家のネットワークを、<br>自分の手で安全かつ快適に。</h1>
+        <p>LAN内の機器スキャンから、広告・マルウェアのローカルDNSブロック、<br>カスタムブラックリスト、テキスト共有までこれ一台で完結。</p>
+        <a href="https://github.com/roseGarden2500/HDNS-FGX_LP/releases/download/v1.0.0/HDNS-FGX_v1.0.0.zip" class="cta-btn">最新版をダウンロード（無料）</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>LAN内デバイス自動スキャン</h3>
+            <p>ボタン一つでネットワーク内の機器を検知し、メーカー名やIP・MACアドレスを一覧表示。カスタムホスト名（例: nas01.home）を自由に設定できます。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>広告＆セキュリティ脅威の二重防御</h3>
+            <p>StevenBlack等の広告ブロックリストやJPCERT等の最新インテリジェンスを統合。不審なデータ送信やトラッキングをブラックホール（0.0.0.0）へ遮断します。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>ユーザーカスタムブラックリスト</h3>
+            <p>「🛡️ BL編集」ボタンから `custom_blacklist.txt` をワンタッチで編集。個別にブロックしたいドメインを自由に追加して完全遮断できます。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>完全ローカル処理で高いプライバシー</h3>
+            <p>外部クラウドへデータを送信せず、すべて手元の環境（ローカル）でDNSクエリのフィルタリングとログ記録を行うため、情報漏洩の心配がありません。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>自動ロールオーバー付きログ保存</h3>
+            <p>誰が・どこにアクセスしたかのDNSクエリログを自動保存（最大1000件のFIFO）。「📝 ログを開く」ボタンでいつでもすぐに確認できます。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>ローカルテキスト共有サーバー内蔵</h3>
+            <p>ポート8095の簡易HTTPサーバーを標準搭載。IPアドレス経由でLAN内の他端末とも手軽にテキストやURLを共有できます。</p>
+        </div>
+    </section>
+
+    <!-- インストール・起動・操作方法ガイド -->
+    <section class="guide-section">
+        <h2>ご利用の流れ</h2>
+        
+        <div class="guide-grid">
+            <div class="guide-card">
+                <h3>📦 インストール方法</h3>
+                <p>ダウンロードした ZIP ファイルを任意のフォルダに解凍します。<br>フォルダ内の <strong>`HDNS-FGX.exe`</strong> を右クリックし、<strong>「管理者として実行」</strong>で起動してください。（※ポート53番を使用するため管理者権限が必要です）</p>
+            </div>
+            <div class="guide-card">
+                <h3>🚀 基本のセットアップ</h3>
+                <p>1. 上部ボタンで<strong>「ローカルDNS起動」</strong>を行います。<br>2. 続いて<strong>「ローカルDNSを適用」</strong>をクリックすると、優先DNSが `127.0.0.1` に切り替わりブロックが有効になります。</p>
+            </div>
+        </div>
+
+        <div class="steps-container">
+            <h3>📖 主な使い方</h3>
+            <ul class="step-list">
+                <li class="step-item">
+                    <span class="step-num">1</span>
+                    <p>「ネットワークをスキャン」でLAN内機器を一覧化</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">2</span>
+                    <p>必要に応じてデバイスに分かりやすいカスタムホスト名を設定</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">3</span>
+                    <p>広告ブロックやセキュリティフィルターの有効化・遮断モード選択</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">4</span>
+                    <p>「🛡️ BL編集」から独自のドメインをブラックリストに追加</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">5</span>
+                    <p>「テキスト共有」を活用してLAN内の他端末と素早く情報交換</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2>よくある質問（FAQ）</h2>
+        <div class="faq-grid">
+            <div class="faq-card">
+                <h3>Q. 起動時に「ポート53番のバインドに失敗しました」というエラーが出ます。</h3>
+                <p>A. 他の常駐ソフト（DNSルーターや仮想化ソフト等）がポート53を占有しているか、アプリを「管理者として実行」していない場合に発生します。管理者権限で起動し直してください。</p>
+            </div>
+            <div class="faq-card">
+                <h3>Q. カスタムブラックリストを編集したのにブロックされません。</h3>
+                <p>A. `custom_blacklist.txt` を編集・保存した後は、メモリ上の設定を再読み込みさせるため、アプリの「ローカルDNS停止」→「ローカルDNS起動」の再起動を行ってください。</p>
+            </div>
+            <div class="faq-card">
+                <h3>Q. 起動時に「Windows によって PC が保護されました」と表示されます。</h3>
+                <p>A. 個人開発の未署名ファイルのため表示される場合があります。「詳細情報」をクリックし、「実行」を選択していただくことで正常に起動します。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ライセンス・免責事項 -->
+    <section class="legal-section">
+        <div class="legal-card">
+            <h3>利用ライセンス</h3>
+            <p>本ソフトウェア（HDNS-FGX）はフリーウェアです。個人利用・商用利用を問わず、どなたでも無料でお使いいただけます。</p>
+        </div>
+        <div class="legal-card">
+            <h3>免責事項</h3>
+            <p>本ソフトウェアの利用によって生じたいかなる損害・トラブルについても、作者は一切の責任を負いかねます。ご利用にあたっては、ご自身の責任において行ってください。</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Feature GateX. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
