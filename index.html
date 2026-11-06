@@ -16,6 +16,7 @@
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --accent: #38bdf8;
+            --badge-bg: rgba(56, 189, 248, 0.1);
         }
 
         * {
@@ -59,24 +60,24 @@
             letter-spacing: 2px;
         }
 
+        /* ヒーローセクション（2カラム化） */
         .hero {
-            max-width: 900px;
-            margin: 4rem auto;
-            text-align: center;
+            max-width: 1200px;
+            margin: 2rem auto 4rem;
             padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
         }
 
-        .hero-icon {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.3));
+        .hero-text {
+            text-align: left;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            line-height: 1.3;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
             -webkit-background-clip: text;
@@ -84,7 +85,7 @@
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-sub);
             margin-bottom: 2.5rem;
         }
@@ -105,6 +106,149 @@
         .cta-btn:hover {
             background-color: var(--primary-hover);
             transform: translateY(-2px);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            text-align: center;
+        }
+
+        .app-screenshot {
+            width: 100%;
+            max-width: 460px; /* 少しサイズをコンパクトに調整 */
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .app-screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        /* アプリ操作画面の解説セクション（ハイライト） */
+        .highlight-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 3rem 2rem;
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .highlight-image {
+            text-align: center;
+        }
+
+        .highlight-image .app-screenshot {
+            max-width: 100%;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background-color: var(--badge-bg);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-text h2 {
+            font-size: 2.1rem;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            color: #ffffff;
+        }
+
+        .highlight-text p {
+            color: var(--text-sub);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+
+        .highlight-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* 画面ギャラリーセクション */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gallery-section p.gallery-sub {
+            color: var(--text-sub);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #334155;
+        }
+
+        .gallery-card .caption {
+            padding: 1.2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-main);
         }
 
         .features {
@@ -144,7 +288,7 @@
             font-size: 0.95rem;
         }
 
-        /* ガイドセクション（使い方・インストール等） */
+        /* ガイドセクション */
         .guide-section {
             max-width: 1000px;
             margin: 6rem auto;
@@ -188,10 +332,6 @@
             font-size: 0.95rem;
         }
 
-        .guide-card ul {
-            padding-left: 1.2rem;
-        }
-
         .steps-container {
             background-color: var(--card-bg);
             border: 1px solid #334155;
@@ -208,8 +348,8 @@
 
         .step-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
             list-style: none;
         }
 
@@ -279,7 +419,7 @@
             font-size: 0.95rem;
         }
 
-        /* ライセンス・免責事項セクション */
+        /* ライセンス・免責事項 */
         .legal-section {
             max-width: 1000px;
             margin: 6rem auto;
@@ -313,8 +453,24 @@
             padding: 3rem 1rem;
             color: var(--text-sub);
             border-top: 1px solid #1e293b;
-            margin-top: 4rem;
+            margin-top: 6rem;
             font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .highlight-section {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -330,21 +486,60 @@
             <img src="HDNS-FGX-ICON.png" alt="HDNS-FGX Icon" class="logo-icon">
             <div class="logo">HDNS-FGX</div>
         </div>
-        <a href="https://github.com/roseGarden2500/HDNS-FGX_LP/releases/download/v1.0.0/HDNS-FGX_v1.0.0.zip" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">ダウンロード</a>
+        <a href="https://github.com/roseGarden2500/HDNS-FGX_LP/releases/download/v1.0.1/HDNS-FGX_v1.0.1.zip" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">ダウンロード</a>
     </header>
 
+    <!-- 1. ヒーローセクション（ファーストビュー） -->
     <section class="hero">
-        <img src="HDNS-FGX-ICON.png" alt="HDNS-FGX Icon" class="hero-icon">
-        <h1>我が家のネットワークを、<br>自分の手で安全かつ快適に。</h1>
-        <p>LAN内の機器スキャンから、広告・マルウェアのローカルDNSブロック、<br>カスタムブラックリスト、テキスト共有までこれ一台で完結。</p>
-        <a href="https://github.com/roseGarden2500/HDNS-FGX_LP/releases/download/v1.0.0/HDNS-FGX_v1.0.0.zip" class="cta-btn">最新版をダウンロード（無料）</a>
+        <div class="hero-text">
+            <h1>我が家のネットワークを、<br>自分の手で安全かつ快適に。</h1>
+            <p>LAN内をスキャンして稼働中の機器を一覧として表示、ホスト名を付けてアクセスできるようになります。また、公知の広告・マルウェアサイトや自身で登録したブラックリストのDNS参照をブロックできます。さらに、他の機器とLAN内だけでのテキスト共有も可能です。</p>
+            <a href="https://github.com/roseGarden2500/HDNS-FGX_LP/releases/download/v1.0.1/HDNS-FGX_v1.0.1.zip" class="cta-btn">最新版をダウンロード（無料）</a>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="HDNS-FGX-Open.png" alt="HDNS-FGX アプリ起動画面" class="app-screenshot">
+        </div>
     </section>
 
+    <!-- 2. ネットワークスキャンハイライトセクション -->
+    <section class="highlight-section">
+        <div class="highlight-image">
+            <img src="HDNS-FGX-Scanning.png" alt="LAN内デバイスの自動スキャン画面" class="app-screenshot">
+        </div>
+        <div class="highlight-text">
+            <span class="highlight-badge">デバイス管理</span>
+            <h2>家庭のLANをボタン１つで<br>簡単スキャン、稼働中の<br>すべての接続機器を一覧化</h2>
+            <p>ネットワーク上の全デバイスを自動検知し、メーカー名やIP・MACアドレスをクリーンに表示。覚えやすいカスタムホスト名も自由に変更できます。</p>
+            <ul class="highlight-list">
+                <li><strong>自動デバイス検出：</strong> ルーターやNAS、ゲーム機などを漏れなくスキャン</li>
+                <li><strong>カスタムホスト名編集：</strong> 「nas01.home」などわかりやすい名前を割り当て</li>
+                <li><strong>クイックアクション：</strong> ブラウザや共有フォルダへワンクリックでアクセス</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 3. 機能ギャラリー（DNSブロック・稼働ログ） -->
+    <section class="gallery-section">
+        <h2>リアルタイムなDNS保護とログ監視</h2>
+        <p class="gallery-sub">広告・トラッカーの遮断状況やクエリの動きを手元で完全に把握</p>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="HDNS-FGX-Detecting.png" alt="DNS問い合わせ検知の様子">
+                <div class="caption">DNS問い合わせのリアルタイム検知</div>
+            </div>
+            <div class="gallery-card">
+                <img src="HDNS-FGX-Blocking.png" alt="トラッカーブロックの動作ログ">
+                <div class="caption">広告・トラッカーのブラックホール転送</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 機能カード一覧 -->
     <section class="features">
         <div class="feature-card">
             <div class="feature-icon">🔍</div>
             <h3>LAN内デバイス自動スキャン</h3>
-            <p>ボタン一つでネットワーク内の機器を検知し、メーカー名やIP・MACアドレスを一覧表示。カスタムホスト名（例: nas01.home）を自由に設定できます。</p>
+            <p>ボタン一つでネットワーク内の機器を検知し、メーカー名やIP・MACアドレスを一覧表示。カスタムホスト名を自由に設定できます。</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🛡️</div>
